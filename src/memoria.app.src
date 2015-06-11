@@ -1,0 +1,13 @@
+{application, memoria, [
+	{description, "memoria web service"},
+	{vsn, "0.1.0"},
+	{id, "git"},
+	{modules, []},
+	{registered, []},
+	{applications, [
+		kernel,
+		stdlib
+	]},
+	{mod, {memoria_app, []}},
+	{env, []}
+]}.
