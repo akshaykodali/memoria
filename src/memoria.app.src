@@ -6,7 +6,8 @@
 	{registered, []},
 	{applications, [
 		kernel,
-		stdlib
+		stdlib,
+		cowboy
 	]},
 	{mod, {memoria_app, []}},
 	{env, []}
