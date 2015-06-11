@@ -1,7 +1,7 @@
 {application, memoria, [
 	{description, "memoria web service"},
 	{vsn, "0.1.0"},
-	{id, "git"},
+	{id, "https://github.com/anonstudios/memoria"},
 	{modules, []},
 	{registered, []},
 	{applications, [
