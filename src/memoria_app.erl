@@ -2,12 +2,12 @@
 -behaviour(application).
 
 -export([start/2, stop/1]).
--export([set_server_header/4]).
 
-start(_Type, _Args) ->
+start(_Type, Args) ->
 	Dispatch = cowboy_router:compile([
 		{'_', [
 				{"/", public_pages_handler, []},
+				{"/share", shares_handler, []},
 				{"/assets/[...]", cowboy_static, {priv_dir, memoria, "assets"}}
 			  ]}
 	]),
@@ -17,7 +17,7 @@ start(_Type, _Args) ->
 		 	
 		]
 	),
-	memoria_sup:start_link().
+	memoria_sup:start_link(Args).
 
 stop(_State) ->
 	ok.

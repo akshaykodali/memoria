@@ -48,6 +48,30 @@
 	margin: 15% auto;
 }
 
+.g-recaptcha > div > div {
+	margin: auto;
+}
+
+.errors {
+	margin: 5% auto;
+}
+
+.errors > ul {
+	list-style: none;
+	padding: 0;
+}
+
+.errors > ul > li {
+	color: red;
+	font-weight: bold;
+	text-align: center;
+	margin: 2% auto;
+}
+
+.errors > ul > .info {
+	color: #428BCA;
+}
+
 @media (max-width: 768px) {
 	.navbar-nav > li {
 		text-align: center;

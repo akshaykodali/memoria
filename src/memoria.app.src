@@ -4,7 +4,6 @@
 	{id, "https://github.com/anonstudios/memoria"},
 	{modules, []},
 	{registered, [
-		memoria_validator,
 		memoria_data
 	]},
 	{applications, [
