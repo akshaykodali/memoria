@@ -12,7 +12,7 @@ init(_, Req, _Opts) ->
 
 handle(Req, State=#state{}) ->
 	{ok, Body} = memoria_home_dtl:render([]),
-	{ok, Rep} = cowboy_req:reply(200, Body, Req),
+	{ok, Rep} = cowboy_req:reply(200, [], Body, Req),
 	{ok, Rep, State}.
 
 terminate(_Reason, _Req, _State) ->

@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Kaushan+Script">
-	<link rel="stylesheet" href="/stylesheets/static_pages.css">
+	<link rel="stylesheet" href="/assets/stylesheets/static_pages.css">
 </head>
 <body>
 	<nav class="navbar">
