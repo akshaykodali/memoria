@@ -1,0 +1,104 @@
+.navbar {
+	background: #93B9F4 none repeat scroll 0% 0%;
+	border-radius: 0;
+	padding: 1% 9%;
+	margin: 0;
+}
+
+.navbar-brand {
+	color: #fff;
+	font-family: "Pacifico";
+	font-size: 1.5em;
+}
+
+.navbar-brand:hover {
+	color: #fff;
+}
+
+.navbar-nav > li > a:hover {
+	background: transparent;
+	color: #428BCA;
+}
+
+.navbar-nav > li > a {
+	color: #fff;
+	font-family: "Kaushan Script";
+	font-size: 1.3em;
+}
+
+.introduction {
+	background: #93B9F4 none repeat scroll 0% 0%;
+}
+
+.introduction > div > div > h2 {
+	text-align: center;
+	color: #fff;
+	font-size: 2.5em;
+	font-family: avenir-regular-light;
+	margin-top: 7%;
+}
+
+.introduction > div > div > p {
+	text-align: center;
+	color: #fff;
+	font-size: 1.5em;
+	margin-top: 7%;
+}
+
+.share-button {
+	display: block;
+	text-align: center;
+	margin: 7% auto 7% auto;
+	color: #93B9F4;
+	background-color: #fff;
+	width: 25%;
+}
+
+.share-button:hover {
+	background-color: #428BCA;
+	color: #fff;
+}
+
+.explore-block {
+	background: #fff none repeat scroll 0% 0%;
+}
+
+.explore-block > div > div > h2 {
+	color: #93B9F4;
+}
+
+.explore-block > div > div > p {
+	color: #93B9F4;	
+}
+
+.explore-button {
+	display: block;
+	text-align: center;
+	margin: 7% auto 7% auto;
+	color: #fff;
+	background-color: #93B9F4;
+	width: 25%;
+}
+
+.explore-button:hover {
+	background-color: #428BCA;
+	color: #fff;
+}
+
+@media (max-width: 768px) {
+	.navbar-nav > li {
+		text-align: center;
+	}
+
+	.icon-bar {
+		border: 1px solid #fff;
+	}
+
+	.navbar {
+		padding: 0;
+	}
+
+	.navbar-nav > li > a {
+		font-size: 1.1em;
+	}
+}

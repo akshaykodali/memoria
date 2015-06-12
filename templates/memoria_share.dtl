@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Share | Memoria</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Kaushan+Script">
+	<link rel="stylesheet" href="/stylesheets/share_view.css">
+</head>
+<body>
+	<nav class="navbar">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/">Memoria</a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="navbar-collapse">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">Explore</a></li>
+	        <li><a href="#">Share</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<div class="container share-form-container">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+				<h2 class="share">Share</h2>
+
+				<form action="/share" method="post" class="share-form">
+					<input name="user_name" type="text" placeholder="My Name">
+					<select name="experience_type">
+						<option value="meeting_bestfriend">First meeting with BFF</option>
+						<option value="first_day_in_college">First day in college</option>
+						<option value="first_date">First date</option>
+						<option value="first_crush">First crush</option>
+						<option value="first_movie_nightout">First movie nighout</option>
+						<option value="first_proposal">First proposal</option>
+						<option value="first_study_nighout">First study nightout</option>
+						<option value="misc">Miscellaneous</option>
+					</select>
+					<textarea name="experience" rows="12" placeholder="My Experience"></textarea>
+					<input class="btn btn-lg btn-primary" type="submit" value="Submit">
+				</form>
+			</div>
+		</div>		
+	</div>
+
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -6,7 +6,10 @@
 
 start(_Type, _Args) ->
 	Dispatch = cowboy_router:compile([
-		{'_', [{"/", public_pages_handler, []}]}
+		{'_', [
+				{"/", public_pages_handler, []},
+				{"/assets/[...]", cowboy_static, {priv_dir, memoria_app, "assets"}}
+			  ]}
 	]),
 	{ok, _} = cowboy:start_http(memoria_app_listener, 30, [{port, 8000}],
 		[

@@ -1,0 +1,67 @@
+.navbar {
+	background: #93B9F4 none repeat scroll 0% 0%;
+	border-radius: 0;
+	padding: 1% 9%;
+	margin: 0;
+}
+
+.navbar-brand {
+	color: #fff;
+	font-family: "Pacifico";
+	font-size: 1.5em;
+}
+
+.navbar-brand:hover {
+	color: #fff;
+}
+
+.navbar-nav > li > a:hover {
+	background: transparent;
+	color: #428BCA;
+}
+
+.navbar-nav > li > a {
+	color: #fff;
+	font-family: "Kaushan Script";
+	font-size: 1.3em;
+}
+
+.share-form-container > div > div > h2 {
+	text-align: center;
+	color: #93B9F4;
+	font-family: "Kaushan Script";
+}
+
+.share-form > select {
+	display: block;
+	margin: 10% auto;
+}
+
+.share-form > input {
+	display: block;
+	margin: 10% auto;
+}
+
+.share-form > textarea {
+	display: block;
+	min-width: 80%;
+	margin: 15% auto;
+}
+
+@media (max-width: 768px) {
+	.navbar-nav > li {
+		text-align: center;
+	}
+
+	.icon-bar {
+		border: 1px solid #fff;
+	}
+
+	.navbar {
+		padding: 0;
+	}
+
+	.navbar-nav > li > a {
+		font-size: 1.1em;
+	}
+}

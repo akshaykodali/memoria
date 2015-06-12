@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Memoria</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Kaushan+Script">
+	<link rel="stylesheet" href="/stylesheets/static_pages.css">
+</head>
+<body>
+	<nav class="navbar">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/">Memoria</a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="navbar-collapse">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="/share">Share</a></li>
+	        <li><a href="/explore">Explore</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<div class="container-fluid introduction share-block">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+				<h2>Revive memories.</h2>
+				<p>Memoria is a place where people can share their memories with the globe. Be it the first day in college or a recent date, you can share it all.</p>
+				<a href="/share" class="btn btn-lg share-button">Share</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid introduction explore-block">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+				<h2>Relive memories.</h2>
+				<p>Got nothing to share? Need inspiration? No problem. Check out what others have shared or if you have already shared in the past, relive your memory.</p>
+				<a href="/explore" class="btn btn-lg explore-button">Explore</a>
+			</div>
+		</div>
+	</div>	
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</body>
+</html>
