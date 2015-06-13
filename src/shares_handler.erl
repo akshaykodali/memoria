@@ -37,7 +37,8 @@ parse_data(KeyValues) ->
 	ExpType = validate(exp_type, KeyValues),
 	ExpTitle = validate(exp_title, KeyValues),
 	Exp = validate(exp, KeyValues),
-	Errors = lists:filter(fun(E) -> is_tuple(E) end, [Name, ExpType, ExpTitle, Exp]),
+	Captcha = validate(captcha, KeyValues),
+	Errors = lists:filter(fun(E) -> is_tuple(E) end, [Name, ExpType, ExpTitle, Exp, Captcha]),
 	case Errors of
 		[] ->
 			{ok, Name};
@@ -84,5 +85,23 @@ validate(exp, KeyValues) ->
 			end;
 		undefined ->
 			{experience, "is required"}
+	end;
+validate(captcha, KeyValues) ->
+	case lists:keyfind(<<"g-recaptcha-response">>, 1, KeyValues) of
+		{_, CaptchaResp} when CaptchaResp /= <<"">> ->
+			Secret = os:getenv("G_RECAPTCHA_SECRET"),
+			Payload = "secret=" ++ Secret ++ "&response=" ++ binary_to_list(CaptchaResp),
+			{ok, {_, _, Reply}} = httpc:request(post, {
+													"https://www.google.com/recaptcha/api/siteverify",
+													[],
+													"application/x-www-form-urlencoded",
+													Payload}, [], []),
+			case Reply of
+				"{\n  \"success\": true\n}" ->
+					Reply;
+				_ ->
+					{captcha, "tells you're not human"}
+			end;
+		_ ->
+			{captcha, "should be completed"}
 	end.
-	
