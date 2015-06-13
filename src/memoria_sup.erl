@@ -10,14 +10,6 @@ start_link(Args) ->
 init([]) ->
 	Procs = [
 		{
-			memoria_validator,
-			{memoria_validator, start_link, []},
-			permanent,
-			5000,
-			worker,
-			[memoria_validator]
-		},
-		{
 			memoria_data,
 			{memoria_data, start_link, []},
 			permanent,

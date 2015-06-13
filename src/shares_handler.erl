@@ -35,8 +35,9 @@ terminate(_Reason, _Req, _State) ->
 parse_data(KeyValues) ->
 	Name = validate(name, KeyValues),
 	ExpType = validate(exp_type, KeyValues),
+	ExpTitle = validate(exp_title, KeyValues),
 	Exp = validate(exp, KeyValues),
-	Errors = lists:filter(fun(E) -> is_tuple(E) end, [Name, ExpType, Exp]),
+	Errors = lists:filter(fun(E) -> is_tuple(E) end, [Name, ExpType, ExpTitle, Exp]),
 	case Errors of
 		[] ->
 			{ok, Name};
@@ -64,6 +65,16 @@ validate(exp_type, KeyValues) ->
 				ExpType;
 		_ -> {experience_type, "is required/invalid"}
 	end;
+validate(exp_title, KeyValues) ->
+	case lists:keyfind(<<"experience_title">>, 1, KeyValues) of
+		{_, ExpTitle} ->
+			case byte_size(ExpTitle) < 10 of
+				true -> {experience_title, "is short"};
+				false -> ExpTitle
+			end;
+		_ ->
+			{experience_title, "is required"}
+	end;
 validate(exp, KeyValues) ->
 	case lists:keyfind(<<"experience">>, 1, KeyValues) of
 		{_, Exp} -> 
@@ -74,3 +85,4 @@ validate(exp, KeyValues) ->
 		undefined ->
 			{experience, "is required"}
 	end.
+	

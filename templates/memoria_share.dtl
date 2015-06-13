@@ -60,6 +60,7 @@
 						<option value="first_study_nighout">First study nightout</option>
 						<option value="misc">Miscellaneous</option>
 					</select>
+					<input name="experience_title" type="text" placeholder="Title of Experience">
 					<textarea name="experience" rows="12" placeholder="My Experience"></textarea>
 					<div class="g-recaptcha" data-sitekey="6Lfb8fwSAAAAADQ_zgne8UgZApn4dkHtYuCnlLBA"></div>
 					<input class="btn btn-lg btn-primary" type="submit" value="Submit">
