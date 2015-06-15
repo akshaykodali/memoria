@@ -21,7 +21,18 @@ handle(Req, State=#state{}) ->
 			{ok, KeyValues, Req3} = cowboy_req:body_qs(Req),
 			case parse_data(KeyValues) of
 				{ok, ValidData} ->
-					memoria_data:store(ValidData);
+					case memoria_data:store(ValidData) of
+						{ok, Hash} ->
+							{ok, Body} = memoria_success_dtl:render([{hash, Hash}]),
+							{ok, Rep} = cowboy_req:reply(200, [], Body, Req3),
+							{ok, Rep, State};
+						{error, Reason} ->
+							{ok, Body} = memoria_failure_dtl:render([{reason, Reason}]),
+							{ok, Rep} = cowboy_req:reply(400, [], Body, Req3),
+							{ok, Rep, State};
+						_ ->
+							error
+					end;
 				{error, Errors} ->
 					{ok, Body} = memoria_share_dtl:render([{errors, Errors}]),
 					{ok, Rep} = cowboy_req:reply(200, [], Body, Req3),
@@ -41,7 +52,8 @@ parse_data(KeyValues) ->
 	Errors = lists:filter(fun(E) -> is_tuple(E) end, [Name, ExpType, ExpTitle, Exp, Captcha]),
 	case Errors of
 		[] ->
-			{ok, Name};
+			ValidData = {Name, ExpType, ExpTitle, Exp},
+			{ok, ValidData};
 		_ ->
 			{error, Errors}
 	end.

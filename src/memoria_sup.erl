@@ -5,6 +5,7 @@
 -export([init/1]).
 
 start_link(Args) ->
+	ssl:start(),
 	supervisor:start_link({local, ?MODULE}, ?MODULE, Args).
 
 init([]) ->
