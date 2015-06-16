@@ -16,7 +16,7 @@
 -include_lib("stdlib/include/qlc.hrl").
 
 -record(state, {}).
--record(experience, {hash, name, exp_type, exp_title, exp}).
+-record(experience, {hash, name, exp_type, exp_title, exp, created_on}).
 
 %% API.
 
@@ -31,8 +31,16 @@ store(Data) ->
 store(Data, From) ->
 	{Name, ExpType, ExpTitle, Exp} = Data,
 	Hash = md5_hash([Name, ExpType, ExpTitle, Exp]),
+	Date = erlang:date(),
 	Fun = fun() ->
-			New = #experience{ hash = Hash, name = Name, exp_type = ExpType, exp_title = ExpTitle, exp = Exp },
+			New = #experience{
+								hash = Hash,
+								name = Name,
+								exp_type = ExpType,
+								exp_title = ExpTitle,
+								exp = Exp,
+								created_on = Date
+							 },
 			mnesia:write(New)
 		  end,
 	case mnesia:transaction(Fun) of
