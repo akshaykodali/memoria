@@ -32,6 +32,37 @@
 	  </div>
 	</nav>
 
+	<div class="container-fluid main-container">
+		<div class="row">
+			<div class="col-xs-12 col-md-7 experiences-list">
+				<h4>Memoirs From The Users</h4>
+				<div class="info">
+					<p>Here are the unmodified versions of memoirs that our users felt like sharing today. Explore, Read and give back by Sharing your memoir!</p>
+				</div>
+				<div class="share">
+					<a href="/share" class="btn btn-lg btn-danger">Share</a>
+				</div>
+				<hr>
+				{% for experience, hash, name, exp_type, exp_title, exp, created_on in experiences %}
+				<div class="experience">
+					<span class="title">{{ exp_title }}</span>
+					<span class="name">via <span>{{ name }}</span> | <a href="/explore/{{ hash }}">View Memoir</a></span>
+					<p class="gist">{{ exp|truncatewords:20 }}</p>
+					<small>Posted in {{ exp_type }}</small>
+				</div>
+				<hr>
+				{% empty %}
+				<div class="no-experiences">
+					<p>Seems like no one shared anything today. You could browse the archives for previous memoirs.</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="col-xs-hidden col-md-5 overview">
+				{# To be filled #}
+			</div>
+		</div>
+	</div>
+
 	<script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>

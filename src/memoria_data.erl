@@ -4,6 +4,7 @@
 %% API.
 -export([start_link/0]).
 -export([store/1, store/2, retrieve/1, retrieve/2]).
+-export([list_experiences/1, list_experiences/2]).
 
 %% gen_server.
 -export([init/1]).
@@ -65,6 +66,21 @@ retrieve(Hash, From) ->
 			gen_server:reply(From, {error, not_found})
 	end.
 
+list_experiences(Date) ->
+	gen_server:call(?MODULE, {list_exp, Date}).
+
+list_experiences(Date, From) ->
+	F = fun() ->
+			Q = qlc:q([E || E <- mnesia:table(experience), E#experience.created_on == Date]),
+			qlc:e(Q)
+		end,
+	case mnesia:transaction(F) of
+		{atomic, ExpRecords} ->
+			gen_server:reply(From, {ok, ExpRecords});
+		_ ->
+			gen_server:reply(From, {error, not_found})
+	end.
+
 %% gen_server.
 
 init([]) ->
@@ -75,6 +91,9 @@ handle_call({store, Data}, From, State) ->
 	{noreply, State};
 handle_call({retrieve, Hash}, From, State) ->
 	spawn(memoria_data, retrieve, [Hash, From]),
+	{noreply, State};
+handle_call({list_exp, Date}, From, State) ->
+	spawn(memoria_data, list_experiences, [Date, From]),
 	{noreply, State}.
 
 handle_cast(_Msg, State) ->

@@ -1,0 +1,102 @@
+.navbar {
+	background: #E5BB31 none repeat scroll 0% 0%;
+	border-radius: 0;
+	padding: 1% 9%;
+	margin: 0;
+}
+
+.navbar-brand {
+	color: #fff;
+	font-family: "Pacifico";
+	font-size: 1.5em;
+}
+
+.navbar-brand:hover {
+	color: #fff;
+}
+
+.navbar-nav > li > a:hover {
+	background: transparent;
+	color: #428BCA;
+}
+
+.navbar-nav > li > a {
+	color: #fff;
+	font-family: "Kaushan Script";
+	font-size: 1.3em;
+}
+
+.main-container > div > div {
+	padding: 5%;
+}
+
+.container-fluid > div > div > h4 {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.info {
+	width: 70%;
+	color: #313D38;
+	font-size: 1.3em;
+	display: inline-block;
+}
+
+.share {
+	display: inline-block;
+	float: right;
+}
+
+.overview {
+	background-color: #F5F5F5;
+}
+
+.experience > .title {
+	display: block;
+	font-size: 2em;
+	margin: 1%
+}
+
+.experience > .name {
+	color: #6D7D79;
+	margin: 1%;
+}
+
+.experience > .name > span {
+	font-weight: bold;
+}
+
+.experience > .gist {
+	margin: 2% 1%;
+	font-style: italic;
+}
+
+.experience > small {
+	margin: 1%;
+}
+
+body {
+	background-color: #F5F5F5;	
+}
+
+.experiences-list {
+	background-color: #fff;
+}
+
+@media (max-width: 768px) {
+	.navbar-nav > li {
+		text-align: center;
+	}
+
+	.icon-bar {
+		border: 1px solid #fff;
+	}
+
+	.navbar {
+		padding: 0;
+	}
+
+	.navbar-nav > li > a {
+		font-size: 1.1em;
+	}
+}

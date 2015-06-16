@@ -14,12 +14,12 @@ handle(Req, State=#state{}) ->
 	case cowboy_req:bindings(Req) of
 		{[{hash, Hash}], Req2} ->
 			case memoria_data:retrieve(Hash) of
-				{ok, {experience, _, Name, ExpType, ExpTitle, Exp}} ->
+				{ok, {experience, _, Name, ExpType, ExpTitle, Exp, _}} ->
 					{ok, Body} = memoria_memoir_dtl:render([
 															{name, Name},
 															{exp_type, ExpType},
 															{exp_title, ExpTitle},
-															{exp, Exp}
+															{exp, binary:split(Exp, <<"\n">>, [global])}
 														   ]),
 					{ok, Rep} = cowboy_req:reply(200, [], Body, Req2),
 					{ok, Rep, State};
@@ -28,7 +28,9 @@ handle(Req, State=#state{}) ->
 					{ok, Rep, State}
 			end;
 		_ ->
-			{ok, Body} = memoria_explore_dtl:render([]),
+			Date = erlang:date(),
+			{ok, Experiences} = memoria_data:list_experiences(Date),
+			{ok, Body} = memoria_explore_dtl:render([{experiences, Experiences}]),
 			{ok, Rep} = cowboy_req:reply(200, [], Body, Req),
 			{ok, Rep, State}
 	end.

@@ -27,7 +27,7 @@ handle(Req, State=#state{}) ->
 							{ok, Rep} = cowboy_req:reply(200, [], Body, Req3),
 							{ok, Rep, State};
 						{error, Reason} ->
-							error_logger:error_message("~p received ~p~n", [?MODULE, Reason]),
+							error_logger:error_msg("~p received ~p~n", [?MODULE, Reason]),
 							{ok, Body} = memoria_failure_dtl:render([]),
 							{ok, Rep} = cowboy_req:reply(400, [], Body, Req3),
 							{ok, Rep, State};

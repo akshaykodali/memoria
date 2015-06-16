@@ -38,7 +38,11 @@
 				<h1>{{ exp_title }}</h1>
 				<h3>{{ name }}</h3>
 				<hr>
-				<p class="experience">{{ exp }}</p>
+				<p class="experience">
+					{% for line in exp %}
+					{{ line }}<br>
+					{% endfor %}
+				</p>
 				<hr>
 				<p class="posted-in">Posted in {{ exp_type }}.</p>
 			</div>
