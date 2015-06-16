@@ -8,6 +8,7 @@ start(_Type, Args) ->
 		{'_', [
 				{"/", public_pages_handler, []},
 				{"/share", shares_handler, []},
+				{"/explore/[:hash]", explore_handler, []},
 				{"/assets/[...]", cowboy_static, {priv_dir, memoria, "assets"}}
 			  ]}
 	]),

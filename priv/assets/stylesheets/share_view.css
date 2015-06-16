@@ -72,6 +72,22 @@
 	color: #428BCA;
 }
 
+.jumbotron {
+	background-color: #fff;
+}
+
+.jumbotron > .container > h1 {
+	text-align: center;
+	color: #337AB7;
+	margin: 5% auto;
+}
+
+.jumbotron > .container > p {
+	text-align: center;
+	color: #93B9F4;
+	margin: 5% auto;
+}
+
 @media (max-width: 768px) {
 	.navbar-nav > li {
 		text-align: center;

@@ -3,7 +3,7 @@
 
 %% API.
 -export([start_link/0]).
--export([store/1, store/2]).
+-export([store/1, store/2, retrieve/1, retrieve/2]).
 
 %% gen_server.
 -export([init/1]).
@@ -12,6 +12,8 @@
 -export([handle_info/2]).
 -export([terminate/2]).
 -export([code_change/3]).
+
+-include_lib("stdlib/include/qlc.hrl").
 
 -record(state, {}).
 -record(experience, {hash, name, exp_type, exp_title, exp}).
@@ -28,7 +30,7 @@ store(Data) ->
 
 store(Data, From) ->
 	{Name, ExpType, ExpTitle, Exp} = Data,
-	Hash = crypto:hash(md5, [Name, ExpType, ExpTitle, Exp]),
+	Hash = md5_hash([Name, ExpType, ExpTitle, Exp]),
 	Fun = fun() ->
 			New = #experience{ hash = Hash, name = Name, exp_type = ExpType, exp_title = ExpTitle, exp = Exp },
 			mnesia:write(New)
@@ -40,6 +42,21 @@ store(Data, From) ->
 			gen_server:reply(From, {error, Reason})
 	end.
 
+retrieve(Hash) ->
+	gen_server:call(?MODULE, {retrieve, Hash}).
+
+retrieve(Hash, From) ->
+	F = fun() ->
+			Q = qlc:q([E || E <- mnesia:table(experience), E#experience.hash == Hash]),
+			qlc:e(Q)
+		end,
+	case mnesia:transaction(F) of
+		{atomic, [ExpRecord]} ->
+			gen_server:reply(From, {ok, ExpRecord});
+		_ ->
+			gen_server:reply(From, {error, not_found})
+	end.
+
 %% gen_server.
 
 init([]) ->
@@ -47,6 +64,9 @@ init([]) ->
 
 handle_call({store, Data}, From, State) ->
 	spawn(memoria_data, store, [Data, From]),
+	{noreply, State};
+handle_call({retrieve, Hash}, From, State) ->
+	spawn(memoria_data, retrieve, [Hash, From]),
 	{noreply, State}.
 
 handle_cast(_Msg, State) ->
@@ -61,3 +81,18 @@ terminate(_Reason, _State) ->
 
 code_change(_OldVsn, State, _Extra) ->
 	{ok, State}.
+
+%% Private.
+md5_hash(Data) ->
+	BinHash = crypto:hash(md5, Data),
+	BinList = binary_to_list(BinHash),
+	DeepList = lists:map(fun(X) -> int_to_hex(X) end, BinList),
+	list_to_binary(lists:flatten(DeepList)).
+
+int_to_hex(Num) when Num < 256 ->
+	[hex(Num div 16), hex(Num rem 16)].
+
+hex(Num) when Num < 10 ->
+	$0 + Num;
+hex(Num) when Num >= 10, Num < 16 ->
+	$a + (Num - 10).

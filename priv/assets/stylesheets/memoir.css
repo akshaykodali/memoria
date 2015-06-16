@@ -1,0 +1,68 @@
+.navbar {
+	background: #93B9F4 none repeat scroll 0% 0%;
+	border-radius: 0;
+	padding: 1% 9%;
+	margin: 0;
+}
+
+.navbar-brand {
+	color: #fff;
+	font-family: "Pacifico";
+	font-size: 1.5em;
+}
+
+.navbar-brand:hover {
+	color: #fff;
+}
+
+.navbar-nav > li > a:hover {
+	background: transparent;
+	color: #428BCA;
+}
+
+.navbar-nav > li > a {
+	color: #fff;
+	font-family: "Kaushan Script";
+	font-size: 1.3em;
+}
+
+.container > div > div > h1 {
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+	color: #337AB7;
+}
+
+.container > div > div > h3 {
+	text-align: right;
+	color: #93B9F4;
+}
+
+.container > div > div > .experience {
+	color: #D3D3D3;
+	font-style: italic;
+	font-size: 1.3em;
+}
+
+.posted-in {
+	text-align: center;
+	color: #93B9F4;
+}
+
+@media (max-width: 768px) {
+	.navbar-nav > li {
+		text-align: center;
+	}
+
+	.icon-bar {
+		border: 1px solid #fff;
+	}
+
+	.navbar {
+		padding: 0;
+	}
+
+	.navbar-nav > li > a {
+		font-size: 1.1em;
+	}
+}
