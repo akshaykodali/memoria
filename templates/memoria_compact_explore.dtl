@@ -1,0 +1,13 @@
+{% for experience, hash, name, exp_type, exp_title, exp, created_on in experiences %}
+<div class="experience">
+	<span class="title">{{ exp_title }}</span>
+	<span class="name">via <span>{{ name }}</span> | <a href="/explore/{{ hash }}">View Memoir</a></span>
+	<p class="gist">{{ exp|truncatewords:20 }}</p>
+	<small>Posted in {{ exp_type }}</small>
+</div>
+<hr>
+{% empty %}
+<div class="no-experiences">
+	<p>Seems like no one shared anything today. You could browse the archives for previous memoirs.</p>
+</div>
+{% endfor %}

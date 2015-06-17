@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Kaushan+Script">
 	<link rel="stylesheet" href="/assets/stylesheets/explore_view.css">
 </head>
-<body>
+<body class="yui3-skin-sam">
 	<nav class="navbar">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -35,7 +35,7 @@
 	<div class="container-fluid main-container">
 		<div class="row">
 			<div class="col-xs-12 col-md-7 experiences-list">
-				<h4>Memoirs From The Users</h4>
+				<h4>Memoirs From Users</h4>
 				<div class="info">
 					<p>Here are the unmodified versions of memoirs that our users felt like sharing today. Explore, Read and give back by Sharing your memoir!</p>
 				</div>
@@ -43,27 +43,35 @@
 					<a href="/share" class="btn btn-lg btn-danger">Share</a>
 				</div>
 				<hr>
-				{% for experience, hash, name, exp_type, exp_title, exp, created_on in experiences %}
-				<div class="experience">
-					<span class="title">{{ exp_title }}</span>
-					<span class="name">via <span>{{ name }}</span> | <a href="/explore/{{ hash }}">View Memoir</a></span>
-					<p class="gist">{{ exp|truncatewords:20 }}</p>
-					<small>Posted in {{ exp_type }}</small>
+				<div id="experiences">
+					{% for experience, hash, name, exp_type, exp_title, exp, created_on in experiences %}
+					<div class="experience">
+						<span class="title">{{ exp_title }}</span>
+						<span class="name">via <span>{{ name }}</span> | <a href="/explore/{{ hash }}">View Memoir</a></span>
+						<p class="gist">{{ exp|truncatewords:20 }}</p>
+						<small>Posted in {{ exp_type }}</small>
+					</div>
+					<hr>
+					{% empty %}
+					<div class="no-experiences">
+						<p>Seems like no one shared anything today. You could browse the archives for previous memoirs.</p>
+					</div>
+					{% endfor %}
 				</div>
-				<hr>
-				{% empty %}
-				<div class="no-experiences">
-					<p>Seems like no one shared anything today. You could browse the archives for previous memoirs.</p>
-				</div>
-				{% endfor %}
 			</div>
-			<div class="col-xs-hidden col-md-5 overview">
-				{# To be filled #}
+			<div class="col-xs-12 col-md-5 overview" id="archive-collapse">
+				<div class="archives-container">
+					<i class="fa fa-archive fa-5x"></i>
+					<span class="archive-text">Archives</span>
+					<div id="archive-calendar"></div>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/yui/3.17.2/yui/yui-min.js"></script>
+	<script src="/assets/scripts/explore.js"></script>
 </body>
 </html>

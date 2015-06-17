@@ -75,6 +75,23 @@
 	margin: 1%;
 }
 
+.archives-container > i {
+	text-align: center;
+	display: block;
+	color: #66C57B;
+}
+
+.archive-text {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+#archive-calendar {
+	margin: 5% auto;
+}
+
 body {
 	background-color: #F5F5F5;	
 }
@@ -99,4 +116,6 @@ body {
 	.navbar-nav > li > a {
 		font-size: 1.1em;
 	}
+
+
 }

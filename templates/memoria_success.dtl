@@ -35,7 +35,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="success-message">Success!</h1>
-			<p>Your experience will live on at <br><a href="/explore/{{ hash }}">https://memoria.pw/explore/{{ hash }}</a></p>
+			<p>Your memoir will live on at <br><a href="/explore/{{ hash }}">https://memoria.im/explore/{{ hash }}</a></p>
 			<p>How about sharing your experience on social networks?</p>
 		</div>
 	</div>
