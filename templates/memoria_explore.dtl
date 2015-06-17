@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Kaushan+Script">
 	<link rel="stylesheet" href="/assets/stylesheets/explore_view.css">
+	<link rel="icon" href="/assets/img/favicon.ico">
 </head>
 <body class="yui3-skin-sam">
 	<nav class="navbar">
